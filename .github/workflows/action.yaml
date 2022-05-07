@@ -6,6 +6,7 @@ jobs:
     strategy:
       matrix:
         version: [13, 14]
+    name: Node ${{ matrix.version }} install
     steps:
       - uses: actions/checkout@v3
         with:
@@ -13,6 +14,6 @@ jobs:
       - run: pwd && ls -al
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.version }}
       - run: npm install -g bats
       - run: bats -v
