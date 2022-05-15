@@ -1,0 +1,16 @@
+name: pass-values
+on:
+  - push
+  - pull_request
+jobs:
+  create-value:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup-value
+        id: setup-value
+        run: |
+          echo "dept_name=IT" >> $GITHUB_ENV
+      - NAME: read-value
+        id: read-value
+        run: |
+          echo "dept name read from previous step is: ${{ env.dept_name }}"
