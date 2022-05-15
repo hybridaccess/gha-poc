@@ -10,7 +10,7 @@ jobs:
         id: setup-value
         run: |
           echo "dept_name=IT" >> $GITHUB_ENV
-      - NAME: read-value
+      - name: read-value
         id: read-value
         run: |
           echo "dept name read from previous step is: ${{ env.dept_name }}"
