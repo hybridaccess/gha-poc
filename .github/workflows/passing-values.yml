@@ -6,11 +6,18 @@ jobs:
   create-value:
     runs-on: ubuntu-latest
     steps:
-      - name: setup-value
+      - name: setup value
         id: setup-value
         run: |
           echo "dept_name=IT" >> $GITHUB_ENV
-      - name: read-value
+      - name: read value
         id: read-value
         run: |
           echo "dept name read from previous step is: ${{ env.dept_name }}"
+  read-value:
+    runs-on: ubuntu-latest
+    steps:
+      - name: read value from previous job
+        id: read-value-from-previous-job
+        run: |
+          echo "dept name read from previous job is: ${{ env.dept_name }}"
