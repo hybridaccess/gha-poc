@@ -25,4 +25,4 @@ jobs:
       - name: Read value from set output color
         id: read-value-rom-previous-job
         run: |
-          echo "The selected location read rom previous job/task is: ${{ steps.set-value-set-output.outputs.LOCATION }}"
+          echo "The selected location read rom previous job/task is: ${{ jobs.create-value.steps.set-value-set-output.outputs.LOCATION }}"
