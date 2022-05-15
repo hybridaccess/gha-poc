@@ -1,6 +1,6 @@
 name: pass-values
 on:
-  - push
+  - workflow_dispatch
   - pull_request
 jobs:
   create-value:
@@ -11,6 +11,7 @@ jobs:
         run: |
           echo "dept_name=IT" >> $GITHUB_ENV
       - name: read value from GITHUB_ENV
+        nee
         id: read-value
         run: |
           echo "dept name read from previous step is: ${{ env.dept_name }}"
@@ -22,7 +23,7 @@ jobs:
   read-value:
     runs-on: ubuntu-latest
     steps:
-      - name: read value from previous job
-        id: read-value-from-previous-job
+      - name: Read value from set output color
+        id: read-value-rom-previous-job
         run: |
-          echo "dept name read from previous job is: ${{ env.dept_name }}"
+          echo "The selected location read rom previous job/task is: ${{ steps.set-value-set-output.outputs.LOCATION }}"
