@@ -6,14 +6,19 @@ jobs:
   create-value:
     runs-on: ubuntu-latest
     steps:
-      - name: setup value
+      - name: setup value in GITHUB_ENV
         id: setup-value
         run: |
           echo "dept_name=IT" >> $GITHUB_ENV
-      - name: read value
+      - name: read value from GITHUB_ENV
         id: read-value
         run: |
           echo "dept name read from previous step is: ${{ env.dept_name }}"
+      - name: Set value with set output
+        run: echo '::set-output name=LOCATION::westeurope'
+        id: set-value-set-output
+      - name: Read value from set output color
+        run: echo "The selected location is ${{ steps.set-value-set-output.outputs.LOCATION }}"
   read-value:
     runs-on: ubuntu-latest
     steps:
