@@ -1,6 +1,6 @@
 name: pass-values
 on:
-  - workflow_dispatch
+  - push
   - pull_request
 jobs:
   create-value:
