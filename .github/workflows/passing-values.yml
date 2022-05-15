@@ -25,8 +25,9 @@ jobs:
 
   read-value:
     runs-on: ubuntu-latest
+    needs: create-value
     steps:
       - name: Read value from previous job output
         id: read-value-from-previous-job
         run: |
-          echo "The selected location read rom previous job/task is: ${{ jobs.create-value.outputs.location}}"
+          echo "The selected location read rom previous job/task is: ${{ needs.create-value.outputs.location}}"
