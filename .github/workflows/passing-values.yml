@@ -11,7 +11,6 @@ jobs:
         run: |
           echo "dept_name=IT" >> $GITHUB_ENV
       - name: read value from GITHUB_ENV
-        nee
         id: read-value
         run: |
           echo "dept name read from previous step is: ${{ env.dept_name }}"
