@@ -19,10 +19,14 @@ jobs:
         id: set-value-set-output
       - name: Read value from set output color
         run: echo "The selected location is ${{ steps.set-value-set-output.outputs.LOCATION }}"
+    outputs:
+      location: ${{ steps.set-value-set-output.outputs.location }}
+
+
   read-value:
     runs-on: ubuntu-latest
     steps:
-      - name: Read value from set output color
-        id: read-value-rom-previous-job
+      - name: Read value from previous job output
+        id: read-value-from-previous-job
         run: |
-          echo "The selected location read rom previous job/task is: ${{ jobs.create-value.steps.set-value-set-output.outputs.LOCATION }}"
+          echo "The selected location read rom previous job/task is: ${{ jobs.create-value.outputs.location}}"
