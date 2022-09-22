@@ -1,0 +1,22 @@
+name: Print SHA
+
+on:
+  pull_request:
+ 
+  push:
+    branches:
+      - master
+      
+jobs:
+  print-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Info
+        shell: bash
+        run: |
+          eccho "plan: ${{ github.event.pull_request.head_sha }}"
+          echo "apply: ${{ github.event.commits[1].id }}"
+      - name: Output Github Context
+        env:
+           GITHUB_CONTEXT: ${{ toJson(gitbut) }}
+        run: echo "GITHUB_CONTEXT"
