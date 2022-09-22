@@ -18,5 +18,5 @@ jobs:
           echo "apply: ${{ github.event.commits[1].id }}"
       - name: Output Github Context
         env:
-           GITHUB_CONTEXT: ${{ toJson(gitbut) }}
+           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "GITHUB_CONTEXT"
