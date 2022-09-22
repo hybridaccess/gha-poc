@@ -14,7 +14,7 @@ jobs:
       - name: Print Info
         shell: bash
         run: |
-          eccho "plan: ${{ github.event.pull_request.head_sha }}"
+          echo "plan: ${{ github.event.pull_request.head_sha }}"
           echo "apply: ${{ github.event.commits[1].id }}"
       - name: Output Github Context
         env:
