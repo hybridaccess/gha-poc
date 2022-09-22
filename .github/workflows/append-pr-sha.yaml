@@ -17,6 +17,9 @@ jobs:
           echo "plan - event.pr.head.sha: ${{ github.event.pull_request.head.sha }}"
           echo "github.sha: ${{ github.sha }}"
           echo "apply: ${{ github.event.commits[1].id }}"
+          
+          echo "before: ${{ github.event.before }}"
+          echo "after: ${{ github.event.after }}"
       - name: Output Github Context
         env:
            GITHUB_CONTEXT: ${{ toJson(github) }}
