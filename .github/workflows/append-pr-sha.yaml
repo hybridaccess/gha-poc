@@ -25,6 +25,7 @@ jobs:
           echo "issue number: ${{ github.event.issue.number }}"
           
           echo "pr: ${{ github.event.head_commit.message }}"
+          echo "github.event.pull_request.number: ${{ github.event.pull_request.number }}"
       - name: Output Github Context
         env:
            GITHUB_CONTEXT: ${{ toJson(github) }}
