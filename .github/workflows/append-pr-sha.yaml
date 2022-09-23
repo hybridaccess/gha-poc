@@ -21,8 +21,10 @@ jobs:
           echo "before: ${{ github.event.before }}"
           echo "after: ${{ github.event.after }}"
           
-          echo "event number: ${{github.event.number}}"
-          echo "issue number: ${{github.event.issue.number}}"
+          echo "event number: ${{ github.event.number }}"
+          echo "issue number: ${{ github.event.issue.number }}"
+          
+          echo "pr: ${{ github.event.head_commit.message }}"
       - name: Output Github Context
         env:
            GITHUB_CONTEXT: ${{ toJson(github) }}
