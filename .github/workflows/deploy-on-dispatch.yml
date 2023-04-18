@@ -23,6 +23,6 @@ jobs:
       - name: tfvars from payload
         run: |
           set -x
-          echo "${{ github.event.client_payload }}" > "$TFVARS_FILE
+          echo "${{ github.event.client_payload }}" > "$TFVARS_FILE"
           tree release
           cat "$TFVARS_FILE"
