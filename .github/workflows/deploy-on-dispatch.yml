@@ -3,6 +3,10 @@ on:
   repository_dispatch:
     types: [deploy-to-platform]
 
+  push:
+    branches:
+      - dispatch
+
 concurrency:
   group: ${{ github.event.client_payload.programme_name }}
 
