@@ -15,8 +15,8 @@ jobs:
       - name: Print Info
         shell: bash
         run: |
-          echo "client_payload: ${{ github.event.client_payload.programme_name }}"
-          echo "github_event: ${{ github.event.client_payload.hostnames }}"
+          echo "client_payload: ${{ github.event.client_payload.tfvars.programme_name }}"
+          echo "github_event: ${{ github.event.client_payload.tfvars }}"
           
           echo "plan - event.pr.head.sha: ${{ github.event.pull_request.head.sha }}"
           echo "github.sha: ${{ github.sha }}"
@@ -51,8 +51,8 @@ jobs:
       - name: tfvars from payload
         run: |
           set -x
-          echo "${{ github.event.client_payload }}"
-          echo "${{ github.event.client_payload }}"
-          echo "${{ github.event.client_payload.programme_name }}" > "$TFVARS_FILE"
+          echo "${{ github.event.client_payload.tfvars }}"
+          echo "${{ github.event.client_payload.tfvars.programme_name }}"
+          echo "${{ github.event.client_payload.tfvars }}" > "$TFVARS_FILE"
           tree release
           cat "$TFVARS_FILE"
