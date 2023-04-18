@@ -9,6 +9,32 @@ on:
 
 
 jobs:
+  print-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Info
+        shell: bash
+        run: |
+          echo "client_payload: ${{ github.event.client_payload }}"
+          echo "github_event: ${{ github.event.client_payload }}"
+          
+          echo "plan - event.pr.head.sha: ${{ github.event.pull_request.head.sha }}"
+          echo "github.sha: ${{ github.sha }}"
+          echo "apply: ${{ github.event.commits[1].id }}"
+          
+          echo "before: ${{ github.event.before }}"
+          echo "after: ${{ github.event.after }}"
+          
+          echo "event number: ${{ github.event.number }}"
+          echo "issue number: ${{ github.event.issue.number }}"
+          
+          echo "pr: ${{ github.event.head_commit.message }}"
+          echo "github.event.pull_request.number: ${{ github.event.pull_request.number }}"
+      - name: Output Github Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "GITHUB_CONTEXT"
+
   deploy-config:
     env:
       GITHBU_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -25,6 +51,8 @@ jobs:
       - name: tfvars from payload
         run: |
           set -x
-          echo "${{ github.event.client_payload }}" > "$TFVARS_FILE"
+          echo "${{ github.event.client_payload }}"
+          echo "${{ github.event.client_payload }}"
+          echo "${{ github.event.client_payload.programme_name }}" > "$TFVARS_FILE"
           tree release
           cat "$TFVARS_FILE"
