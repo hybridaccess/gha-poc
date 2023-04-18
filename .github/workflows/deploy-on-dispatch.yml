@@ -1,0 +1,28 @@
+name: Deploy via dispatch
+on:
+  repository_dispatch:
+    types: [deploy-to-platform]
+
+concurrency:
+  group: ${{ github.event.client_payload.programme_name }}
+
+jobs:
+  deploy-config:
+    env:
+      GITHBU_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TFVARS_FILE: "release/ci/config/terraform.tfvars.json"
+
+    name: Terraform plan/apply
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          path: release
+      - name: tfvars from payload
+        run: |
+          set -x
+          echo "${{ github.event.client_payload }}" > "$TFVARS_FILE
+          tree release
+          cat "$TFVARS_FILE"
