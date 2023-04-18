@@ -3,8 +3,10 @@ on:
   repository_dispatch:
     types: [deploy-to-platform]
 
-concurrency:
-  group: ${{ github.event.client_payload.programme_name }}
+  push:
+    branches:
+      - dispatch
+
 
 jobs:
   deploy-config:
