@@ -1,0 +1,13 @@
+{
+  "event_type":"deploy-to-platform",
+  "client_payload": {
+    "deployment_type": "standalone",
+    "email": "techie.admin@hybridaccess.net",
+    "hostnames": [
+      "ep1",
+      "ep2",
+      "ep3"
+    ],
+    "programme_name": "proxy-api-demo"
+  }
+}
