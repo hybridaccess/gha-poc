@@ -24,13 +24,12 @@ jobs:
           path: release
       - name: tfvars from payload
         run: |
-          set -x
           echo "---------------------tfvars-----------------------------"
           echo "${{ ToJson(github.event.client_payload.tfvars) }}"
-          echo "---------------------tfvars pipe jq -----------------------------"
-          echo "${{ ToJson(github.event.client_payload.tfvars) }}" | jq
-          echo "---------------------programme_name-----------------------------"          
-          echo "${{ github.event.client_payload.tfvars.programme_name }}"
-          echo "${{ ToJson(github.event.client_payload.tfvars) }}" | jq > "$TFVARS_FILE"
-          tree release
-          cat "$TFVARS_FILE"
+#          echo "---------------------tfvars pipe jq -----------------------------"
+#          echo "${{ ToJson(github.event.client_payload.tfvars) }}" | jq
+#          echo "---------------------programme_name-----------------------------"
+##          echo "${{ github.event.client_payload.tfvars.programme_name }}"
+##          echo "${{ ToJson(github.event.client_payload.tfvars) }}" | jq > "$TFVARS_FILE"
+##          tree release
+##          cat "$TFVARS_FILE"
